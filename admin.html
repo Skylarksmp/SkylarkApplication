@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Skylark Admin Panel</title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <div class="logo-icon">
+                    SLK
+                </div>
+
+                <span>
+                    SKYLARK
+                </span>
+
+            </a>
+
+
+            <div class="admin-title">
+                Admin Panel
+            </div>
+
+
+            <button
+                id="logoutButton"
+                class="logout-btn"
+                style="display:none;"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         LOGIN SCREEN
+    ====================================================== -->
+
+    <main
+        id="loginScreen"
+        class="login-screen"
+    >
+
+        <div class="login-card">
+
+            <div class="login-icon">
+                🛡️
+            </div>
+
+            <div class="small-title">
+                SKYLARK NETWORK
+            </div>
+
+            <h1>
+                Admin <span>Login</span>
+            </h1>
+
+            <p>
+                Sign in with your authorized Google account
+                to access staff applications.
+            </p>
+
+
+            <button
+                id="googleLoginButton"
+                class="google-btn"
+            >
+
+                <span class="google-icon">
+                    G
+                </span>
+
+                Continue with Google
+
+            </button>
+
+
+            <p
+                id="loginMessage"
+                class="login-message"
+            ></p>
+
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
+                ← Back to Application
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         ADMIN DASHBOARD
+    ====================================================== -->
+
+    <main
+        id="adminDashboard"
+        class="dashboard"
+        style="display:none;"
+    >
+
+
+        <!-- HEADER -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <div class="small-title">
+                    SKYLARK ADMIN
+                </div>
+
+                <h1>
+                    Staff Applications
+                </h1>
+
+                <p>
+                    Review and manage submitted applications.
+                </p>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div
+                    id="adminEmail"
+                    class="admin-email"
+                >
+                    Loading...
+                </div>
+
+                <div class="admin-status">
+                    ● Authorized Admin
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="totalCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card pending">
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card accepted">
+
+                <span>
+                    Accepted
+                </span>
+
+                <strong id="acceptedCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card rejected">
+
+                <span>
+                    Rejected
+                </span>
+
+                <strong id="rejectedCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPLICATION LIST -->
+
+        <section class="applications-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Applications
+                    </h2>
+
+                    <p>
+                        Click an application to view the answers.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="refreshButton"
+                    class="refresh-btn"
+                >
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+
+            <div
+                id="applicationsList"
+                class="applications-list"
+            >
+
+                <div class="loading">
+                    Loading applications...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         APPLICATION MODAL
+    ====================================================== -->
+
+    <div
+        id="applicationModal"
+        class="modal"
+    >
+
+        <div class="modal-box">
+
+
+            <button
+                id="closeModal"
+                class="close-modal"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-top">
+
+                <div class="modal-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <div class="small-title">
+                        APPLICATION
+                    </div>
+
+                    <h2 id="modalTitle">
+                        Application
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="modalContent"
+                class="modal-content"
+            >
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="application-actions">
+
+                <button
+                    id="acceptButton"
+                    class="accept-btn"
+                >
+                    ✓ Accept
+                </button>
+
+                <button
+                    id="rejectButton"
+                    class="reject-btn"
+                >
+                    ✕ Reject
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FIREBASE ADMIN SCRIPT
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="admin.js"
+    ></script>
+
+
+</body>
+
+</html>

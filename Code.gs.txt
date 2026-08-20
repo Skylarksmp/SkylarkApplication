@@ -1,0 +1,361 @@
+/* =====================================================
+   SKYLARK STAFF APPLICATION
+   GOOGLE APPS SCRIPT
+===================================================== */
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+const RECEIVER_EMAIL = "xianytcontent@gmail.com";
+
+
+/* =====================================================
+   GET REQUEST
+===================================================== */
+
+function doGet(e) {
+
+    return ContentService
+        .createTextOutput(
+            "Skylark Staff Application API is online."
+        )
+        .setMimeType(
+            ContentService.MimeType.TEXT
+        );
+
+}
+
+
+/* =====================================================
+   POST REQUEST
+===================================================== */
+
+function doPost(e) {
+
+    try {
+
+        const data = e.parameter;
+
+
+        /* =================================================
+           GET APPLICATION DATA
+        ================================================= */
+
+        const ignDiscord =
+            data.ignDiscord || "Not provided";
+
+        const ageTimezone =
+            data.ageTimezone || "Not provided";
+
+        const hours =
+            data.hours || "Not provided";
+
+        const experience =
+            data.experience || "Not provided";
+
+        const disagreement =
+            data.disagreement || "Not provided";
+
+        const whyYou =
+            data.whyYou || "Not provided";
+
+        const extra =
+            data.extra || "Not provided";
+
+
+        /* =================================================
+           DATE
+        ================================================= */
+
+        const submittedAt =
+            new Date();
+
+
+        const formattedDate =
+            Utilities.formatDate(
+                submittedAt,
+                Session.getScriptTimeZone(),
+                "MMMM dd, yyyy - hh:mm:ss a"
+            );
+
+
+        /* =================================================
+           EMAIL SUBJECT
+        ================================================= */
+
+        const subject =
+            "🛡️ New Skylark Staff Application";
+
+
+        /* =================================================
+           PLAIN TEXT EMAIL
+        ================================================= */
+
+        const body =
+
+            "SKYLARK STAFF APPLICATION\n" +
+            "====================================\n\n" +
+
+            "Submitted:\n" +
+            formattedDate +
+            "\n\n" +
+
+            "====================================\n\n" +
+
+            "MINECRAFT IGN & DISCORD\n" +
+            "------------------------------------\n" +
+            ignDiscord +
+            "\n\n" +
+
+            "AGE & TIMEZONE\n" +
+            "------------------------------------\n" +
+            ageTimezone +
+            "\n\n" +
+
+            "STAFF HOURS PER WEEK\n" +
+            "------------------------------------\n" +
+            hours +
+            "\n\n" +
+
+            "PREVIOUS STAFF EXPERIENCE\n" +
+            "------------------------------------\n" +
+            experience +
+            "\n\n" +
+
+            "DISAGREEMENT SCENARIO\n" +
+            "------------------------------------\n" +
+            disagreement +
+            "\n\n" +
+
+            "WHAT SETS THEM APART?\n" +
+            "------------------------------------\n" +
+            whyYou +
+            "\n\n" +
+
+            "ADDITIONAL INFORMATION\n" +
+            "------------------------------------\n" +
+            extra +
+            "\n\n" +
+
+            "====================================\n" +
+            "SKYLARK NETWORK\n" +
+            "Staff Application\n" +
+            "Made By DevRexvyn";
+
+
+        /* =================================================
+           HTML EMAIL
+        ================================================= */
+
+        const htmlBody =
+
+            "<div style=\"" +
+            "font-family:Arial,sans-serif;" +
+            "background:#061c35;" +
+            "padding:30px;" +
+            "color:#ffffff;" +
+            "\">" +
+
+                "<div style=\"" +
+                "max-width:700px;" +
+                "margin:auto;" +
+                "background:#0a3049;" +
+                "border:1px solid #1a607d;" +
+                "border-radius:18px;" +
+                "padding:30px;" +
+                "\">" +
+
+                    "<h1 style=\"" +
+                    "color:#58eaff;" +
+                    "margin-top:0;" +
+                    "\">" +
+                    "🛡️ New Skylark Staff Application" +
+                    "</h1>" +
+
+                    "<p style=\"color:#9ec6d7;\">" +
+                    "<strong>Submitted:</strong> " +
+                    escapeHtml(formattedDate) +
+                    "</p>" +
+
+
+                    createSection(
+                        "Minecraft IGN & Discord",
+                        ignDiscord
+                    ) +
+
+                    createSection(
+                        "Age & Timezone",
+                        ageTimezone
+                    ) +
+
+                    createSection(
+                        "Staff Hours Per Week",
+                        hours
+                    ) +
+
+                    createSection(
+                        "Previous Staff Experience",
+                        experience
+                    ) +
+
+                    createSection(
+                        "Disagreement Scenario",
+                        disagreement
+                    ) +
+
+                    createSection(
+                        "What Sets Them Apart?",
+                        whyYou
+                    ) +
+
+                    createSection(
+                        "Additional Information",
+                        extra
+                    ) +
+
+
+                    "<div style=\"" +
+                    "margin-top:30px;" +
+                    "padding-top:20px;" +
+                    "border-top:1px solid #1a607d;" +
+                    "color:#628999;" +
+                    "font-size:12px;" +
+                    "\">" +
+
+                    "Skylark Network<br>" +
+                    "Staff Application<br>" +
+                    "Made By DevRexvyn" +
+
+                    "</div>" +
+
+                "</div>" +
+
+            "</div>";
+
+
+        /* =================================================
+           SEND EMAIL
+        ================================================= */
+
+        MailApp.sendEmail({
+
+            to: RECEIVER_EMAIL,
+
+            subject: subject,
+
+            body: body,
+
+            htmlBody: htmlBody,
+
+            name: "Skylark Staff Applications"
+
+        });
+
+
+        /* =================================================
+           RESPONSE
+        ================================================= */
+
+        return ContentService
+            .createTextOutput(
+                JSON.stringify({
+                    success: true,
+                    message: "Application submitted successfully."
+                })
+            )
+            .setMimeType(
+                ContentService.MimeType.JSON
+            );
+
+
+    } catch (error) {
+
+
+        /* =================================================
+           ERROR
+        ================================================= */
+
+        console.error(error);
+
+
+        return ContentService
+            .createTextOutput(
+                JSON.stringify({
+                    success: false,
+                    message: "Failed to submit application."
+                })
+            )
+            .setMimeType(
+                ContentService.MimeType.JSON
+            );
+
+    }
+
+}
+
+
+/* =====================================================
+   EMAIL SECTION HELPER
+===================================================== */
+
+function createSection(title, content) {
+
+    return (
+
+        "<div style=\"" +
+        "margin-top:22px;" +
+        "padding:20px;" +
+        "background:#06263d;" +
+        "border:1px solid #164d66;" +
+        "border-radius:12px;" +
+        "\">" +
+
+            "<h3 style=\"" +
+            "color:#67eaff;" +
+            "font-size:14px;" +
+            "margin-top:0;" +
+            "\">" +
+
+            escapeHtml(title) +
+
+            "</h3>" +
+
+            "<p style=\"" +
+            "color:#c2dce6;" +
+            "font-size:14px;" +
+            "line-height:1.7;" +
+            "white-space:pre-wrap;" +
+            "\">" +
+
+            escapeHtml(content) +
+
+            "</p>" +
+
+        "</div>"
+
+    );
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}

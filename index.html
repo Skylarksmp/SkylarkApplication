@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skylark Staff Application</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                <div class="logo-icon">SLK</div>
+
+                <span>SKYLARK</span>
+            </a>
+
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#application">Apply</a>
+                <a href="#about">About</a>
+            </nav>
+
+            <a href="admin.html" class="admin-btn">
+                🛡️ Admin
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                 SKYLARK NETWORK
+            </div>
+
+            <h1>
+                Skylark Staff<br>
+                <span>Application</span>
+            </h1>
+
+            <p>
+                Think you have what it takes to become part of
+                the Skylark staff team? Take your time and give
+                thoughtful answers.
+            </p>
+
+            <a href="#application" class="primary-btn">
+                Apply for Staff
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <main class="application-section" id="application">
+
+        <div class="application-header">
+
+            <div class="small-title">
+                STAFF APPLICATION
+            </div>
+
+            <h2>
+                Apply for <span>Staff</span>
+            </h2>
+
+            <p>
+                Take your time with these. Thoughtful, specific
+                answers stand out far more than long ones.
+                There's no rush.
+            </p>
+
+            <div class="notice">
+
+                <div>✓ One pending application per account.</div>
+
+                <div>
+                    ✓ You'll be notified here and can check back
+                    anytime for a decision.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form id="applicationForm">
+
+
+            <!-- IGN + DISCORD -->
+
+            <div class="question">
+
+                <label for="ignDiscord">
+
+                    WHAT IS YOUR MINECRAFT IN-GAME NAME
+                    AND DISCORD USERNAME?
+
+                </label>
+
+                <p class="hint">
+                    Example: IGN: Xian123 | Discord: xian123
+                </p>
+
+                <textarea
+                    id="ignDiscord"
+                    name="ignDiscord"
+                    placeholder="IGN: ... Discord: ..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- AGE + TIMEZONE -->
+
+            <div class="question">
+
+                <label for="ageTimezone">
+
+                    HOW OLD ARE YOU, AND IN WHICH TIME ZONE
+                    ARE YOU LOCATED?
+
+                </label>
+
+                <p class="hint">
+                    Example: 19, GMT+8 (Manila)
+                </p>
+
+                <input
+                    type="text"
+                    id="ageTimezone"
+                    name="ageTimezone"
+                    placeholder="e.g. 19, GMT+8 (Manila)"
+                    required
+                >
+
+            </div>
+
+
+            <!-- HOURS -->
+
+            <div class="question">
+
+                <label for="hours">
+
+                    ON AVERAGE, HOW MANY HOURS PER WEEK CAN
+                    YOU REALISTICALLY COMMIT TO STAFF DUTIES?
+
+                </label>
+
+                <p class="hint">
+                    Be honest — this is about consistency,
+                    not the highest number.
+                </p>
+
+                <input
+                    type="text"
+                    id="hours"
+                    name="hours"
+                    placeholder="e.g. 10–15 hours per week"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EXPERIENCE -->
+
+            <div class="question">
+
+                <label for="experience">
+
+                    HAVE YOU BEEN STAFF ON ANOTHER MINECRAFT
+                    SERVER OR DISCORD COMMUNITY BEFORE?
+
+                </label>
+
+                <p class="hint">
+                    If so, where, for how long, and what was
+                    your role? If this is your first time,
+                    that's completely fine.
+                </p>
+
+                <textarea
+                    id="experience"
+                    name="experience"
+                    placeholder="Tell us about your previous experience..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- DISAGREEMENT -->
+
+            <div class="question">
+
+                <label for="disagreement">
+
+                    DESCRIBE A TIME YOU DISAGREED WITH A
+                    DECISION MADE BY SOMEONE ABOVE YOU.
+
+                </label>
+
+                <p class="hint">
+                    For example: a moderator, teacher, manager,
+                    or another person in authority.
+                </p>
+
+                <textarea
+                    id="disagreement"
+                    name="disagreement"
+                    placeholder="Explain what happened and how you handled it..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- WHY YOU -->
+
+            <div class="question">
+
+                <label for="whyYou">
+
+                    WHAT SETS YOU APART FROM OTHER APPLICANTS?
+                    WHY SHOULD WE PICK YOU SPECIFICALLY?
+
+                </label>
+
+                <textarea
+                    id="whyYou"
+                    name="whyYou"
+                    placeholder="Tell us why you would be a good fit..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- EXTRA -->
+
+            <div class="question">
+
+                <label for="extra">
+
+                    IS THERE ANYTHING ELSE YOU'D LIKE US
+                    TO KNOW ABOUT YOU?
+
+                    <span class="optional">
+                        OPTIONAL
+                    </span>
+
+                </label>
+
+                <p class="hint">
+                    Optional.
+                </p>
+
+                <textarea
+                    id="extra"
+                    name="extra"
+                    placeholder="Anything else you'd like to tell us..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <div class="submit-area">
+
+                <button
+                    type="submit"
+                    id="submitButton"
+                    class="submit-btn"
+                >
+                    Submit Application
+                </button>
+
+                <p id="formMessage" class="form-message"></p>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section class="about" id="about">
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                ⛏
+            </div>
+
+            <div>
+
+                <h2>
+                    Join Skylark
+                </h2>
+
+                <p>
+                    We're looking for responsible,
+                    respectful and active members who
+                    want to help make Skylark a better
+                    community.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            SKYLARK
+        </div>
+
+        <p>
+            © 2026 Skylark Network. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#application">
+                Apply
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="admin.html">
+                Admin
+            </a>
+
+        </div>
+
+        <div class="made-by">
+            Made By <strong>DevRexvyn</strong>
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         FIREBASE
+    ====================================================== -->
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

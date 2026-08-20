@@ -1,0 +1,934 @@
+/* =====================================================
+   SKYLARK STAFF APPLICATION
+   OCEAN / SKY THEME
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #061c35 0%,
+            #073b63 30%,
+            #075b82 55%,
+            #043c5c 78%,
+            #021c31 100%
+        );
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(117, 225, 255, 0.25),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(0, 200, 255, 0.18),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 50% 70%,
+            rgba(0, 119, 255, 0.16),
+            transparent 35%
+        );
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: -100px;
+    left: 10%;
+    width: 80%;
+    height: 700px;
+    pointer-events: none;
+    opacity: 0.12;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent 0%,
+            rgba(180, 245, 255, 0.5) 20%,
+            transparent 35%
+        ),
+        linear-gradient(
+            70deg,
+            transparent 35%,
+            rgba(180, 245, 255, 0.4) 50%,
+            transparent 65%
+        );
+
+    filter: blur(12px);
+    transform: rotate(-5deg);
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 25, 45, 0.92),
+            rgba(2, 40, 65, 0.72)
+        );
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid rgba(120, 230, 255, 0.15);
+
+    box-shadow:
+        0 8px 35px rgba(0, 0, 0, 0.18);
+}
+
+.nav-container {
+    max-width: 1150px;
+    height: 74px;
+    margin: auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    color: white;
+    text-decoration: none;
+
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b5f7ff,
+            #00d9ff 45%,
+            #087cff
+        );
+
+    color: #02304a;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 20px rgba(0, 220, 255, 0.45),
+        inset 0 1px 3px rgba(255,255,255,0.7);
+}
+
+/* NAV LINKS */
+
+nav {
+    display: flex;
+    gap: 32px;
+}
+
+nav a {
+    position: relative;
+
+    color: #b9d8e8;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: #6eeeff;
+
+    transition: 0.25s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ADMIN BUTTON */
+
+.admin-btn {
+    padding: 10px 17px;
+
+    border-radius: 10px;
+
+    color: #a9f3ff;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    background:
+        rgba(50, 210, 255, 0.08);
+
+    border:
+        1px solid rgba(120, 235, 255, 0.3);
+
+    transition: 0.25s;
+}
+
+.admin-btn:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(50, 210, 255, 0.18);
+
+    border-color:
+        rgba(120, 235, 255, 0.6);
+
+    box-shadow:
+        0 8px 25px rgba(0, 200, 255, 0.15);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 130px 20px 90px;
+
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 180px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(2, 24, 40, 0.8)
+        );
+
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
+}
+
+/* BADGE */
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 17px;
+
+    border-radius: 50px;
+
+    color: #8cf1ff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    background:
+        rgba(93, 231, 255, 0.08);
+
+    border:
+        1px solid rgba(112, 235, 255, 0.25);
+
+    box-shadow:
+        0 0 30px rgba(0, 200, 255, 0.08);
+
+    margin-bottom: 27px;
+}
+
+/* TITLE */
+
+.hero h1 {
+    font-size:
+        clamp(48px, 7vw, 80px);
+
+    line-height: 1.02;
+
+    font-weight: 800;
+
+    letter-spacing: -3px;
+
+    text-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.hero h1 span {
+    background:
+        linear-gradient(
+            90deg,
+            #d8fbff,
+            #4deaff,
+            #1fa7ff,
+            #a8f7ff
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        oceanGradient 6s ease infinite;
+}
+
+@keyframes oceanGradient {
+
+    0% {
+        background-position: 0%;
+    }
+
+    50% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: 0%;
+    }
+
+}
+
+/* HERO DESCRIPTION */
+
+.hero p {
+    max-width: 650px;
+
+    margin: 28px auto;
+
+    color: #b3d0df;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+/* PRIMARY BUTTON */
+
+.primary-btn {
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    border-radius: 11px;
+
+    color: #02304a;
+    text-decoration: none;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #baf8ff,
+            #31dfff,
+            #0799ff
+        );
+
+    box-shadow:
+        0 8px 30px rgba(0, 207, 255, 0.22);
+
+    transition: 0.25s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 40px rgba(0, 207, 255, 0.35);
+}
+
+/* =====================================================
+   APPLICATION SECTION
+===================================================== */
+
+.application-section {
+    width: 100%;
+    max-width: 900px;
+
+    margin: auto;
+
+    padding:
+        90px 25px 110px;
+}
+
+.application-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.small-title {
+    color: #71edff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+.application-header h2 {
+    margin-top: 12px;
+
+    font-size: 43px;
+
+    letter-spacing: -1px;
+}
+
+.application-header h2 span {
+    color: #50e7ff;
+}
+
+.application-header > p {
+    max-width: 650px;
+
+    margin: 15px auto;
+
+    color: #9abccc;
+
+    line-height: 1.7;
+}
+
+/* NOTICE */
+
+.notice {
+    max-width: 650px;
+
+    margin: 25px auto 0;
+
+    padding: 17px 20px;
+
+    text-align: left;
+
+    border-radius: 13px;
+
+    background:
+        rgba(80, 225, 255, 0.06);
+
+    border:
+        1px solid rgba(100, 230, 255, 0.13);
+
+    color: #9bc6d6;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+#applicationForm {
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.question {
+    padding: 28px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.085),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid rgba(160, 235, 255, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    transition: 0.25s;
+}
+
+.question:focus-within {
+    border-color:
+        rgba(80, 225, 255, 0.35);
+
+    box-shadow:
+        0 0 30px rgba(0, 200, 255, 0.06);
+}
+
+.question label {
+    display: block;
+
+    color: #e9fbff;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+
+    line-height: 1.6;
+}
+
+.hint {
+    margin-top: 8px;
+
+    color: #789aaa;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.optional {
+    display: inline-block;
+
+    margin-left: 7px;
+
+    padding: 3px 7px;
+
+    border-radius: 5px;
+
+    color: #72eaff;
+
+    background:
+        rgba(80, 225, 255, 0.08);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+/* INPUTS */
+
+.question input,
+.question textarea {
+    width: 100%;
+
+    margin-top: 16px;
+
+    padding: 14px 15px;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    border:
+        1px solid rgba(150, 235, 255, 0.12);
+
+    background:
+        rgba(0, 20, 35, 0.42);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition: 0.25s;
+}
+
+.question textarea {
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.question input::placeholder,
+.question textarea::placeholder {
+    color: #557687;
+}
+
+.question input:focus,
+.question textarea:focus {
+    border-color:
+        rgba(80, 225, 255, 0.55);
+
+    box-shadow:
+        0 0 20px rgba(0, 200, 255, 0.07);
+}
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+.submit-area {
+    text-align: center;
+
+    padding-top: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    color: #02304a;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #baf8ff,
+            #31dfff,
+            #0799ff
+        );
+
+    box-shadow:
+        0 10px 35px rgba(0, 207, 255, 0.2);
+
+    transition: 0.25s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 207, 255, 0.32);
+}
+
+.submit-btn:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+.form-message {
+    min-height: 20px;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding:
+        10px 25px 100px;
+}
+
+.about-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 23px;
+
+    padding: 31px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid rgba(150,235,255,0.1);
+
+    backdrop-filter: blur(15px);
+}
+
+.about-icon {
+    min-width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background:
+        rgba(62,225,255,0.09);
+
+    border:
+        1px solid rgba(62,225,255,0.15);
+
+    font-size: 28px;
+
+    box-shadow:
+        0 0 25px rgba(0,210,255,0.08);
+}
+
+.about h2 {
+    margin-bottom: 7px;
+}
+
+.about p {
+    color: #98b7c6;
+
+    line-height: 1.7;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    text-align: center;
+
+    padding: 55px 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(1,20,35,0.35),
+            rgba(1,13,25,0.85)
+        );
+
+    border-top:
+        1px solid rgba(120,230,255,0.1);
+}
+
+.footer-logo {
+    color: #6eeeff;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 20px rgba(0,220,255,0.25);
+}
+
+footer p {
+    margin:
+        13px 0 22px;
+
+    color: #668595;
+
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 22px;
+
+    font-size: 12px;
+}
+
+.footer-links a {
+    color: #8caebd;
+
+    text-decoration: none;
+
+    transition: 0.25s;
+}
+
+.footer-links a:hover {
+    color: #6eeeff;
+}
+
+.made-by {
+    margin-top: 20px;
+
+    color: #4f7180;
+
+    font-size: 11px;
+}
+
+.made-by strong {
+    color: #72eaff;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 680px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+
+        letter-spacing: -2px;
+    }
+
+    .application-header h2 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .nav-container {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 13px;
+    }
+
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+
+        font-size: 11px;
+    }
+
+    .admin-btn {
+        padding: 8px 11px;
+
+        font-size: 10px;
+    }
+
+    .hero {
+        padding:
+            120px 18px 70px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .application-section {
+        padding:
+            70px 18px 80px;
+    }
+
+    .question {
+        padding: 23px;
+    }
+
+    .about {
+        padding:
+            10px 18px 80px;
+    }
+
+    .about-box {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 27px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+}
